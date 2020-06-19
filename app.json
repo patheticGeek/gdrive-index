@@ -1,0 +1,7 @@
+{
+  "name": "gdrive-index",
+  "description": "A index server for google drive",
+  "keywords": ["gdrive", "google", "drive", "index", "server", "heroku"],
+  "repository": "https://github.com/patheticGeek/gdrive-index",
+  "builpacks": [{ "url": "heroku/nodejs" }]
+}

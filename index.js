@@ -1,6 +1,7 @@
 const compression = require("compression");
 const express = require("express");
 const api = require("./routes/api");
+const frontend = require("./routes/frontend");
 
 require("dotenv").config();
 
@@ -21,5 +22,8 @@ server.use((req, res, next) => {
 server.get("/ping", (req, res) => res.send("pong"));
 
 server.use("/api", api);
+
+server.use("/static", express.static("web/build/static"));
+server.all("*", (req, res) => res.sendFile("web/build/index.html", { root: __dirname }));
 
 server.listen(PORT, () => console.log(`> Listining on http://localhost:${PORT}`));

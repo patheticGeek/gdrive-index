@@ -4,7 +4,8 @@
   "description": "A index server for google drive",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "build": "cd web && npm run build",
+    "dev": "concurrently --kill-others \"PORT=3001 nodemon index.js\" \"cd web && npm run start\"",
     "start": "NODE_ENV=production node index.js"
   },
   "repository": {
@@ -31,5 +32,15 @@
     "express": "^4.17.1",
     "googleapis": "^52.1.0",
     "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      ".next",
+      "node_modules",
+      "web"
+    ]
   }
 }

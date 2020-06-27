@@ -1,5 +1,6 @@
 const compression = require("compression");
 const express = require("express");
+const api = require("./routes/api");
 
 require("dotenv").config();
 
@@ -18,5 +19,7 @@ server.use((req, res, next) => {
 });
 
 server.get("/ping", (req, res) => res.send("pong"));
+
+server.use("/api", api);
 
 server.listen(PORT, () => console.log(`> Listining on http://localhost:${PORT}`));

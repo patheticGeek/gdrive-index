@@ -4,6 +4,7 @@
   "description": "A index server for google drive",
   "main": "index.js",
   "scripts": {
+    "prebuild": "npm install && cd web && npm install",
     "build": "cd web && npm run build",
     "dev": "concurrently --kill-others \"PORT=3001 nodemon index.js\" \"cd web && npm run start\"",
     "start": "NODE_ENV=production node index.js"

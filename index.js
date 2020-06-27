@@ -1,5 +1,8 @@
 const compression = require("compression");
 const express = require("express");
+
+require("dotenv").config();
+
 const dev = process.env.NODE_ENV !== "production";
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 

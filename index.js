@@ -1,7 +1,6 @@
 const compression = require("compression");
 const express = require("express");
 const api = require("./routes/api");
-const frontend = require("./routes/frontend");
 
 require("dotenv").config();
 

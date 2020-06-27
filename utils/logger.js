@@ -5,6 +5,7 @@ const logFile = "./logs.txt";
 fs.writeFileSync(logFile, "");
 
 function logger(...args) {
+  let toWrite = "";
   args.forEach((arg) => {
     if (typeof arg === "string" || typeof arg === "number") {
       toWrite += arg;

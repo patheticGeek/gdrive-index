@@ -19,6 +19,7 @@ server.use((req, res, next) => {
 });
 
 server.get("/ping", (req, res) => res.send("pong"));
+server.use("/logs", (req, res) => res.sendFile("logs.txt", { root: __dirname }));
 
 server.use("/api", api);
 

@@ -3,7 +3,7 @@ import { useRouteMatch } from "react-router";
 import useSwr from "swr";
 import DriveItem from "../components/DriveItem";
 
-export default function Folder() {
+export default function Folder({ search } = { search: true }) {
   const [query, setQuery] = useState("");
   const match = useRouteMatch("/:folderId");
   const folderId = match ? match.params.folderId : "";
@@ -14,11 +14,14 @@ export default function Folder() {
     return data.files.filter((val) => val.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }, [query, data]);
 
-  return !data && !error ? (
-    <div className="loading-div" />
-  ) : (
+  if (!data && !error) return <div className="loading-div" />;
+  if (error) return <h4 style={{ textAlign: "center", color: "red" }}>Cannot find the folder</h4>;
+
+  return (
     <>
-      <input type="text" name="q" value={query} placeholder="Search in this folder..." onChange={(e) => setQuery(e.target.value)} />
+      {search && (
+        <input type="text" name="q" value={query} placeholder="Search in this folder..." onChange={(e) => setQuery(e.target.value)} />
+      )}
       {query.length >= 3 ? (
         <>
           <h4 className="drive-results-title">Search results:</h4>
@@ -29,7 +32,11 @@ export default function Folder() {
           </div>
         </>
       ) : (
-        <div className="drive-items">{data && data.files.map((item) => <DriveItem key={item.id} {...item} />)}</div>
+        <div className="drive-items">
+          {data.files.map((item) => (
+            <DriveItem key={item.id} {...item} />
+          ))}
+        </div>
       )}
     </>
   );

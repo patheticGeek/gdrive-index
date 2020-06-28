@@ -64,8 +64,17 @@ main {
 .space-between {
   justify-content: space-between;
 }
+.space-evenly {
+  justify-content: space-evenly;
+}
 .items-center {
   align-items: center;
+}
+.mt-1 {
+  margin-top: 1em;
+}
+.mb-05 {
+  margin-bottom: 0.5em;
 }
 
 .drive-items {
@@ -92,7 +101,7 @@ main {
   align-items: center;
   margin-bottom: 6px;
 }
-.drive-item-main h3 {
+.drive-item-title {
   word-break: break-all;
   white-space: nowrap;
   overflow: hidden;
@@ -104,23 +113,45 @@ main {
   margin-right: 8px;
 }
 
-button {
+.drive-file {
+  max-width: 600px;
+  width: 100%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+.button {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   padding: 8px 12px;
-  color: #fff;
   background-color: transparent;
+  color: #fff;
+  text-decoration: none;
   border: 1px solid #fff;
   border-radius: 5px;
   font-size: 1em;
   font-weight: 500;
+  margin: 8px 0px;
 }
-button > .btn-icon {
+button.primary,
+.button.primary {
+  color: #5888ff;
+  border: 1px solid #5888ff;
+}
+button > .btn-icon,
+.button > .btn-icon {
   width: 18px;
   height: 16px;
   font-size: 16px;
   margin-right: 6px;
   margin-bottom: -2px;
+}
+.row > button:not(:last-child),
+.row > .button:not(:last-child) {
+  margin-right: 8px;
 }
 
 input {

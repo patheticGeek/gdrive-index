@@ -6,14 +6,153 @@ body {
   padding: 0px;
   min-height: 100vh;
   font-family: "Noto Sans JP", sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 h1,
 h2,
-h3,
+h3 {
+  margin: 0px;
+  font-weight: 500;
+}
 h4,
 h5,
 h6 {
   margin: 0px;
+  font-weight: 300;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  background-color: #252525;
+  -webkit-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+}
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  width: calc(100% - 32px);
+}
+.nav-link-github {
+  height: 24px;
+  width: 24px;
+  color: #fff;
+  font-size: 24px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  margin: 0px auto;
+  padding: 24px 12px;
+}
+
+.row {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.space-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+
+.drive-items {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0px;
+}
+.drive-items > .drive-item:not(:last-child) {
+  margin-bottom: 16px;
+}
+.drive-results-title {
+  margin-top: 16px;
+}
+
+.drive-item {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #4e4e4e;
+  color: inherit;
+  text-decoration: none;
+}
+.drive-item-main {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.drive-item-main h3 {
+  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.drive-item-icon {
+  height: 18px;
+  width: 18px;
+  margin-right: 8px;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-size: 1em;
   font-weight: 500;
+}
+button > .btn-icon {
+  width: 18px;
+  height: 16px;
+  font-size: 16px;
+  margin-right: 6px;
+  margin-bottom: -2px;
+}
+
+input {
+  border: 0px;
+  padding: 12px 16px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.loading-div {
+  width: 18px;
+  height: 18px;
+  margin: 24px auto;
+  border: 2px solid #fff;
+  border-left-color: transparent;
+  border-radius: 14px;
+  animation: spinner 1s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

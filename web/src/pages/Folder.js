@@ -3,7 +3,7 @@ import { useRouteMatch } from "react-router";
 import useSwr from "swr";
 import DriveItem from "../components/DriveItem";
 
-export default function Folder({ search } = { search: true }) {
+function Folder({ search }) {
   const [query, setQuery] = useState("");
   const match = useRouteMatch("/:folderId");
   const folderId = match ? match.params.folderId : "";
@@ -41,3 +41,7 @@ export default function Folder({ search } = { search: true }) {
     </>
   );
 }
+
+Folder.defaultProps = { search: true };
+
+export default Folder;

@@ -20,7 +20,7 @@ export default function Folder({ search } = { search: true }) {
   return (
     <>
       {search && (
-        <input type="text" name="q" value={query} placeholder="Search in this folder..." onChange={(e) => setQuery(e.target.value)} />
+        <input type="text" name="query" value={query} placeholder="Search in this folder..." onChange={(e) => setQuery(e.target.value)} />
       )}
       {query.length >= 3 ? (
         <>

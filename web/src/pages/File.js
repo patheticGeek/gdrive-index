@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouteMatch } from "react-router";
 import useSwr from "swr";
+import copyToClipboard from "../utils/copyToClipboard";
 import prettyBytes from "../utils/prettyBytes";
 import redableTime from "../utils/redableTime";
 
@@ -8,6 +9,9 @@ export default function File() {
   const match = useRouteMatch("/file/:fileId");
   const fileId = match ? match.params.fileId : "";
   const { data, error } = useSwr(`/api/file/${fileId}`, (url) => fetch(url).then((res) => res.json()));
+
+  const copyStreamableLink = () => copyToClipboard(`${window.location.origin}/api/file/download/${fileId}`);
+  const copyShareLink = () => copyToClipboard(`${window.location.origin}/file/${fileId}`);
 
   if (!data && !error) return <div className="loading-div" />;
   if (error) return <h4 style={{ textAlign: "center", color: "red" }}>Cannot find the file</h4>;
@@ -29,19 +33,19 @@ export default function File() {
           <span className="btn-icon">
             <ion-icon name="download-outline" />
           </span>
-          Download now
+          <span className="btn-text">Download now</span>
         </a>
-        <button>
+        <button onClick={copyStreamableLink}>
           <span className="btn-icon">
             <ion-icon name="play-outline" />
           </span>
-          Copy streamable link
+          <span className="btn-text">Copy streamable link</span>
         </button>
-        <button>
+        <button onClick={copyShareLink}>
           <span className="btn-icon">
             <ion-icon name="copy-outline" />
           </span>
-          Copy share link
+          <span className="btn-text">Copy share link</span>
         </button>
       </div>
     </div>

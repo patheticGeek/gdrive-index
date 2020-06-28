@@ -5,8 +5,13 @@ const router = express.Router();
 const drive = new Drive();
 
 router.get("/folder", async (req, res) => {
-  const files = await drive.getFiles();
-  res.send(files);
+  try {
+    const files = await drive.getFiles();
+    res.send(files);
+  } catch (e) {
+    const code = e.message.indexOf("Folder not found") !== -1 ? 400 : 500;
+    res.status(code).send(e.message);
+  }
 });
 
 router.get("/folder/:id", async (req, res) => {
@@ -15,7 +20,7 @@ router.get("/folder/:id", async (req, res) => {
     const files = await drive.getFiles(folderId);
     res.send(files);
   } catch (e) {
-    const code = e.message.contains("Folder not found") ? 400 : 500;
+    const code = e.message.indexOf("Folder not found") !== -1 ? 400 : 500;
     res.status(code).send(e.message);
   }
 });
@@ -27,7 +32,8 @@ router.get("/file/:id", async (req, res) => {
     const data = await drive.getFileData(fileId);
     res.send(data);
   } catch (e) {
-    res.status(500).send("An error occured");
+    const code = e.message.indexOf("File not found") !== -1 ? 400 : 500;
+    res.status(code).send(e.message);
   }
 });
 

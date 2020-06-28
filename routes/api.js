@@ -24,6 +24,17 @@ router.get("/file/:id", async (req, res) => {
   try {
     const fileId = req.query.id || req.params.id;
     if (!fileId) res.status(400).send("File id not specified");
+    const data = await drive.getFileData(fileId);
+    res.send(data);
+  } catch (e) {
+    res.status(500).send("An error occured");
+  }
+});
+
+router.get("/file/download/:id", async (req, res) => {
+  try {
+    const fileId = req.query.id || req.params.id;
+    if (!fileId) res.status(400).send("File id not specified");
     const stream = await drive.getFileStream(fileId, req.headers);
     Object.keys(stream.headers).forEach((val) => {
       res.setHeader(val, stream.headers[val]);

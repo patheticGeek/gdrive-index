@@ -1,9 +1,6 @@
 import React from "react";
+import Folder from "./Folder";
 
 export default function Share() {
-  return (
-    <div>
-      <h1>Share</h1>
-    </div>
-  );
+  return <Folder share={true} />;
 }

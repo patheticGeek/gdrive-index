@@ -3,9 +3,9 @@ import { useRouteMatch } from "react-router";
 import useSwr from "swr";
 import DriveItem from "../components/DriveItem";
 
-function Folder({ search }) {
+function Folder({ search, share }) {
   const [query, setQuery] = useState("");
-  const match = useRouteMatch("/:folderId");
+  const match = useRouteMatch(share ? "/share/:folderId" : "/:folderId");
   const folderId = match ? match.params.folderId : "";
   const { data, error } = useSwr(`/api/folder/${folderId}`, (url) => fetch(url).then((res) => res.json()));
 
@@ -42,6 +42,6 @@ function Folder({ search }) {
   );
 }
 
-Folder.defaultProps = { search: true };
+Folder.defaultProps = { search: true, share: false };
 
 export default Folder;

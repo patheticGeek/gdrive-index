@@ -6,6 +6,7 @@ const Folder = React.lazy(() => import("./pages/Folder"));
 const File = React.lazy(() => import("./pages/File"));
 const Share = React.lazy(() => import("./pages/Share"));
 const Setup = React.lazy(() => import("./pages/Setup"));
+const Login = React.lazy(() => import("./pages/Login"));
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Suspense fallback={<div className="loading-div" />}>
           <Switch>
             <Route exact path="/" component={Folder} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/:folderId" component={Folder} />
             <Route exact path="/file/:fileId" component={File} />
             <Route exact path="/share/:folderId" component={Share} />

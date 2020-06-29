@@ -80,6 +80,24 @@ main {
   border: 0px !important;
 }
 
+.login-div {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  margin: 0px auto;
+}
+.login-div > h2 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+.login-div > input {
+  margin-bottom: 8px;
+}
+.login-div > button {
+  margin: 8px auto;
+}
+
 .drive-items {
   display: flex;
   flex-direction: column;
@@ -154,6 +172,7 @@ button,
   font-size: 1em;
   font-weight: 500;
   margin: 8px 0px;
+  transition: 150ms opacity ease-in;
 }
 button.primary,
 .button.primary {
@@ -171,6 +190,9 @@ button > .btn-icon:not(:last-child),
 .row > button:not(:last-child),
 .row > .button:not(:last-child) {
   margin-right: 8px;
+}
+button:disabled {
+  opacity: 0.5;
 }
 
 input {

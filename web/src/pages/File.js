@@ -51,12 +51,3 @@ export default function File() {
     </div>
   );
 }
-
-{
-  /* <button>
-<span className="btn-icon">
-  <ion-icon name="logo-github" />
-</span>
-Copy share link
-</button> */
-}

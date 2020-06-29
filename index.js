@@ -1,5 +1,6 @@
 const compression = require("compression");
 const express = require("express");
+const logger = require("./utils/logger");
 const api = require("./routes/api");
 
 require("dotenv").config();
@@ -7,7 +8,7 @@ require("dotenv").config();
 const dev = process.env.NODE_ENV !== "production";
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 
-console.log(`Dev: ${dev}`);
+logger(`Dev: ${dev}`);
 
 const server = express();
 
@@ -26,4 +27,4 @@ server.use("/api", api);
 server.use("/static", express.static("web/build/static"));
 server.all("*", (req, res) => res.sendFile("web/build/index.html", { root: __dirname }));
 
-server.listen(PORT, () => console.log(`> Listining on http://localhost:${PORT}`));
+server.listen(PORT, () => logger(`> Listining on http://localhost:${PORT}`));

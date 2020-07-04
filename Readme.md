@@ -5,7 +5,7 @@ As teamdrive links cannot be share with people out of the drive this will let yo
 
 ## Deploying
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/patheticGeek/torrent-aio-bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/patheticGeek/gdrive-index)
 
 ## How to setup
 

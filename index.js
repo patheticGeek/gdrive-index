@@ -40,7 +40,6 @@ server.get("/checkAuth", (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  console.log(req.headers.cookie);
   if (!!checkAuth(req)) {
     res.sendFile("web/build/index.html", { root: __dirname });
   } else {

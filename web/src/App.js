@@ -69,7 +69,6 @@ export default function App() {
                 <Route exact path="/setup" component={Setup} />
               </>
             )}
-            <Route component={() => <h2 style={{ textAlign: "center" }}>404 - Are you lost babygirl?</h2>} />
           </Switch>
         </Suspense>
       </main>

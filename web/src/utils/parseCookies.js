@@ -1,5 +1,5 @@
 function parseCookies(cookiesString) {
-  if (!cookiesString) return;
+  if (!cookiesString) return {};
 
   const cookies = {};
 

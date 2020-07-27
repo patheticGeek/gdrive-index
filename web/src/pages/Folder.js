@@ -14,7 +14,15 @@ function Folder({ search, share }) {
     return data.files.filter((val) => val.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
   }, [query, data]);
 
-  if (!data && !error) return <div className="loading-div" />;
+  if (!data && !error)
+    return (
+      <>
+        {search && (
+          <input type="text" name="query" value={query} placeholder="Search in this folder..." onChange={(e) => setQuery(e.target.value)} />
+        )}
+        <div className="loading-div" />
+      </>
+    );
   if (error) return <h4 style={{ textAlign: "center", color: "red" }}>Cannot find the folder</h4>;
 
   return (

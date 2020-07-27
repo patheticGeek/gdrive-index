@@ -42,11 +42,7 @@ server.get("/checkAuth", (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  if (checkAuth(req)) {
-    res.sendFile("web/build/index.html", { root: __dirname });
-  } else {
-    res.redirect("/login");
-  }
+  res.sendFile("web/build/index.html", { root: __dirname });
 });
 
 server.all("*", (req, res) => res.sendFile("web/build/index.html", { root: __dirname }));

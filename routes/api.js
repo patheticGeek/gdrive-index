@@ -9,6 +9,7 @@ router.get("/folder", async (req, res) => {
     const files = await drive.getFiles();
     res.send(files);
   } catch (e) {
+    console.log(e.message || e);
     const code = e.message.indexOf("Folder not found") !== -1 ? 400 : 500;
     res.status(code).send(e.message);
   }
@@ -20,6 +21,7 @@ router.get("/folder/:id", async (req, res) => {
     const files = await drive.getFiles(folderId);
     res.send(files);
   } catch (e) {
+    console.log(e.message || e);
     const code = e.message.indexOf("Folder not found") !== -1 ? 400 : 500;
     res.status(code).send(e.message);
   }
@@ -32,6 +34,7 @@ router.get("/file/:id", async (req, res) => {
     const data = await drive.getFileData(fileId);
     res.send(data);
   } catch (e) {
+    console.log(e.message || e);
     const code = e.message.indexOf("File not found") !== -1 ? 400 : 500;
     res.status(code).send(e.message);
   }
@@ -50,6 +53,7 @@ router.get("/file/download/:id", async (req, res) => {
       .on("error", () => {})
       .pipe(res);
   } catch (e) {
+    console.log(e.message || e);
     res.status(500).send("An error occured");
   }
 });

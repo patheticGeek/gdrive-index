@@ -9,12 +9,13 @@ As teamdrive links cannot be share with people out of the drive this will let yo
 
 ## How to setup
 
-I wrote this in a hurry will update in future
+New way:
 
-1. Click on deploy to heroku button above and make a heroku project.
-2. Goto https://developers.google.com/drive/api/v3/quickstart/nodejs and click on Enable the Drive API (when it asks for type of click select other) copy client id and set an enviorment variable in heroku with name CLIENT_ID then copy client secret and set another env named CLIENT_SECRET.
-3. Goto https://torrent-aio-bot.herokuapp.com/drivehelp and generate your token set a env names TOKEN to its value.
-4. Goto the setting then config vars section and click reveal config vars. You'll need to add the following variables:
+1. Goto https://\<project name\>.herokuapp.com/setup
+2. Goto https://developers.google.com/drive/api/v3/quickstart/nodejs and click on Enable the Drive API (when it asks for type of click select other) and get client id and client secret then paste those in the setup page
+3. Fill out the rest and you'll see a table at the end telling you all the enviorment variables you need to set.
+4. Goto setting page of your project on heroku and then in Config Vars section click Reveal Config Vars.
+5. Add the config vars from the table onto heroku and wait 15-20sec before it starts up and you're good to go.
 
 | Variable name                            | Value                                                                                                                           |
 | :--------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |

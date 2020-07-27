@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router";
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -22,7 +21,10 @@ export default function Login() {
     }
   };
 
-  if (loggedIn) return <Redirect to="/" />;
+  if (loggedIn) {
+    window.location = "/";
+    return null;
+  }
 
   return (
     <div className="login-div">

@@ -195,11 +195,24 @@ button:disabled {
   opacity: 0.5;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  margin: 8px auto;
+  padding: 12px 16px;
+  width: calc(100% - 32px);
+  max-width: 600px;
+}
+
 input {
+  display: block;
   border: 0px;
+  margin: 8px auto;
   padding: 12px 16px;
   border-radius: 5px;
   font-size: 1em;
+  width: calc(100% - 32px);
+  max-width: 600px;
 }
 
 .loading-div {
@@ -210,6 +223,30 @@ input {
   border-left-color: transparent;
   border-radius: 14px;
   animation: spinner 1s linear infinite;
+}
+
+h3 {
+  margin: 8px 0px;
+}
+
+table {
+  margin-top: 8px;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #3a3a3a;
+  text-align: left;
+  padding: 12px;
+  width: calc(50%-24px);
+  word-break: break-all;
+  min-width: 150px;
+}
+
+tr:nth-child(even) {
+  background-color: #2c2c2c;
 }
 
 @-webkit-keyframes spinner {

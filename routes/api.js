@@ -58,4 +58,29 @@ router.get("/file/download/:id", async (req, res) => {
   }
 });
 
+router.use("/getAuthURL", (req, res) => {
+  const CLIENT_ID = req.query.clientId;
+  const CLIENT_SECRET = req.query.clientSecret;
+
+  if (!CLIENT_ID || !CLIENT_SECRET) {
+    res.send(JSON.stringify({ error: "Client Id and secret are required" }));
+  } else {
+    const authURL = drive.getAuthURL(CLIENT_ID, CLIENT_SECRET);
+    res.send(JSON.stringify({ error: "", authURL }));
+  }
+});
+
+router.use("/getAuthToken", async (req, res) => {
+  const CLIENT_ID = req.query.clientId;
+  const CLIENT_SECRET = req.query.clientSecret;
+  const AUTH_CODE = req.query.authCode;
+
+  if (!CLIENT_ID || !CLIENT_SECRET || !AUTH_CODE) {
+    res.send(JSON.stringify({ error: "Client Id and secret and auth code are required" }));
+  } else {
+    const token = await drive.getAuthToken(CLIENT_ID, CLIENT_SECRET, AUTH_CODE);
+    res.send(JSON.stringify({ token, error: "" }));
+  }
+});
+
 module.exports = router;

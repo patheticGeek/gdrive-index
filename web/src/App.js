@@ -1,5 +1,5 @@
 import React, { Suspense, useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import parseCookies from "./utils/parseCookies";
 import Navbar from "./components/Navbar";
 
@@ -51,24 +51,15 @@ export default function App() {
       <main>
         <Suspense fallback={<div className="loading-div" />}>
           <Switch>
-            {loggedIn ? (
-              <>
-                <Route exact path="/" component={Folder} />
-                <Route exact path="/:folderId" component={Folder} />
-                <Route exact path="/file/:fileId" component={File} />
-                <Route exact path="/share/:folderId" component={Share} />
-                <Route exact path="/setup" component={Setup} />
-              </>
-            ) : (
-              <>
-                <Route exact path="/">
-                  <Redirect to="/login" />
-                </Route>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/share/:folderId" component={Share} />
-                <Route exact path="/setup" component={Setup} />
-              </>
-            )}
+            <Route exact path="/setup" component={Setup} />
+            <Route exact path="/share/:folderId" component={Share} />
+            {!loggedIn && <Route exact path="/" component={Login} />}
+            {loggedIn && <Route exact path="/" component={Folder} />}
+            {loggedIn && <Route exact path="/:folderId" component={Folder} />}
+            {loggedIn && <Route exact path="/file/:fileId" component={File} />}
+            <Route>
+              <h2 style={{ textAlign: "center" }}>404 - Are you lost babygirl?</h2>
+            </Route>
           </Switch>
         </Suspense>
       </main>

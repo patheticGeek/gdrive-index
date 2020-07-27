@@ -11,7 +11,8 @@ export default function Login() {
     if (loading) return;
     setLoading(true);
     const user = btoa(`${username}:${password}`);
-    const req = await fetch(`/checkAuth?basicauth=${user}`).then((res) => res.json());
+    const host = window.location.host === "localhost:3000" ? "http://localhost:3001" : "";
+    const req = await fetch(`${host}/checkAuth?basicauth=${user}`).then((res) => res.json());
     if (req["auth"]) {
       document.cookie = `basicauth=${user}`;
       setLoggedIn(true);

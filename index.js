@@ -1,6 +1,7 @@
 const compression = require("compression");
 const express = require("express");
 const logger = require("./utils/logger");
+const parseCookies = require("./utils/parseCookies");
 const api = require("./routes/api");
 
 require("dotenv").config();
@@ -18,7 +19,8 @@ function checkAuth(req) {
   if (!AUTH) return true;
   if (!req.headers.cookie) return false;
 
-  return req.headers.cookie.indexOf(basicauth) !== -1;
+  const cookies = parseCookies(req.headers.cookie);
+  return cookies.basicauth === basicauth;
 }
 
 server.use(compression());
@@ -40,7 +42,7 @@ server.get("/checkAuth", (req, res) => {
 });
 
 server.get("/", (req, res) => {
-  if (!!checkAuth(req)) {
+  if (checkAuth(req)) {
     res.sendFile("web/build/index.html", { root: __dirname });
   } else {
     res.redirect("/login");

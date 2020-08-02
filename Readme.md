@@ -5,17 +5,17 @@ As teamdrive links cannot be share with people out of the drive this will let yo
 
 ## Deploying
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/patheticGeek/gdrive-index)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## How to setup
+1. Deploy on heroku and add config vars of CLIENT_ID & CLIENT_SECRET manually.
+2. To Generate values, Goto https://developers.google.com/drive/api/v3/quickstart/nodejs and click on Enable the Drive API (when it asks for type of click select Desktop) and you get CLIENT_ID & CLIENT_SECRET (Put these values in Step 1)
+1. Now, Goto https://<Name of Your App>.herokuapp.com/setup
+3. Fill out the rest and you'll be able to generate TOKEN value. Put this value in config vars manually.
 
-New way:
-
-1. Goto https://\<project name\>.herokuapp.com/setup
-2. Goto https://developers.google.com/drive/api/v3/quickstart/nodejs and click on Enable the Drive API (when it asks for type of click select other) and get client id and client secret then paste those in the setup page
-3. Fill out the rest and you'll see a table at the end telling you all the enviorment variables you need to set.
-4. Goto setting page of your project on heroku and then in Config Vars section click Reveal Config Vars.
-5. Add the config vars from the table onto heroku and wait 15-20sec before it starts up and you're good to go.
+You are done, GOTO https://<Name of Your App>.herokuapp.com and Enjoy 😍😍😍
+  
+  Put these OPTIONAL values if you want 👇👇👇
 
 | Variable name                            | Value                                                                                                                           |
 | :--------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
